@@ -5,6 +5,7 @@ const NarrativeExperience = {
     isPortalActivated: false,
     currentChapter: 0,
     scrollProgress: 0,
+    audioPlayer: null,
     
     // Initialize the narrative experience
     init() {
@@ -14,6 +15,7 @@ const NarrativeExperience = {
         this.setupProgressTracking();
         this.setupImageInteractions();
         this.setupKeyboardNavigation();
+        this.setupBackgroundAudio();
         console.log('🔱 Universal Narrative - Experience Activated');
     },
     
@@ -412,6 +414,55 @@ const NarrativeExperience = {
         }
     },
     
+    // Setup background audio
+    setupBackgroundAudio() {
+        this.audioPlayer = document.getElementById('narrativeAudio');
+        
+        if (!this.audioPlayer) return;
+        
+        // Set volume to a comfortable level
+        this.audioPlayer.volume = 0.4;
+        
+        // Try immediate auto-play
+        this.audioPlayer.play().then(() => {
+            console.log('🎵 Background audio started automatically');
+        }).catch(() => {
+            console.log('🎵 Auto-play blocked, waiting for user interaction');
+            // If auto-play is blocked, start on first user interaction
+            this.startOnUserInteraction();
+        });
+        
+        // Handle audio events
+        this.audioPlayer.addEventListener('loadedmetadata', () => {
+            console.log('🎵 Background audio loaded');
+        });
+        
+        this.audioPlayer.addEventListener('error', (e) => {
+            console.log('🚫 Background audio error:', e);
+        });
+    },
+    
+    // Start audio on first user interaction
+    startOnUserInteraction() {
+        const startAudio = () => {
+            this.audioPlayer.play().then(() => {
+                console.log('🎵 Background audio started after user interaction');
+            }).catch((error) => {
+                console.log('🚫 Audio play failed:', error);
+            });
+            
+            // Remove event listeners after first successful play
+            document.removeEventListener('click', startAudio);
+            document.removeEventListener('keydown', startAudio);
+            document.removeEventListener('scroll', startAudio);
+        };
+        
+        // Listen for any user interaction
+        document.addEventListener('click', startAudio);
+        document.addEventListener('keydown', startAudio);
+        document.addEventListener('scroll', startAudio);
+    },
+    
     // Reset experience
     resetExperience() {
         this.isPortalActivated = false;
@@ -421,6 +472,12 @@ const NarrativeExperience = {
         const portalText = document.querySelector('.portal-text');
         if (portalText) {
             portalText.textContent = 'ENTER YOUR PORTAL';
+        }
+        
+        // Reset audio
+        if (this.audioPlayer) {
+            this.audioPlayer.pause();
+            this.audioPlayer.currentTime = 0;
         }
         
         console.log('🔄 Narrative Experience Reset');
