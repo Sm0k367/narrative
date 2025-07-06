@@ -1,3 +1,40 @@
-"devDependencies": {
-  "serve": "^14.2.1"
+{
+  "name": "epic-tech-ai-narrative",
+  "version": "1.0.0",
+  "description": "The Universal Narrative: The Awakening - A story that transcends boundaries, exploring humanity's innate desire to create and manifest dreams into reality.",
+  "main": "index.html",
+  "scripts": {
+    "start": "serve -s . -l 3000",
+    "build": "echo 'Static site - no build required'",
+    "dev": "serve -s . -l 3000",
+    "preview": "serve -s . -l 4173"
+  },
+  "keywords": [
+    "epic-tech-ai",
+    "narrative",
+    "storytelling",
+    "ai",
+    "creativity",
+    "universal-story",
+    "interactive",
+    "consciousness",
+    "manifestation"
+  ],
+  "author": "Epic Tech AI",
+  "license": "MIT",
+  "homepage": "https://buy.stripe.com/8wM6px5ycf9pgfK000",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sm0k367/epic-tech-ai-narrative.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Sm0k367/epic-tech-ai-narrative/issues"
+  },
+  "devDependencies": {
+    "serve": "^14.2.1"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  }
 }
