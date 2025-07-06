@@ -326,11 +326,83 @@ body {
 .themes h3 {
     font-family: 'Syncopate', sans-serif;
     color: var(--electric-gold);
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
     font-size: 1.1rem;
     letter-spacing: 0.1em;
+    text-align: center;
 }
 
+.theme-poetry {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.theme-box {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-radius: 15px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.theme-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.theme-box:hover::before {
+    left: 100%;
+}
+
+.theme-box:hover {
+    transform: translateY(-5px);
+    border-color: var(--electric-gold);
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
+}
+
+.theme-box h4 {
+    font-family: 'Syncopate', sans-serif;
+    color: var(--electric-gold);
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    letter-spacing: 0.05em;
+}
+
+.poetry-text {
+    font-style: italic;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--pure-white);
+    margin-bottom: 1rem;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.poetry-text em {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.theme-essence {
+    font-size: 0.85rem;
+    color: var(--warm-gray);
+    font-weight: 300;
+    line-height: 1.4;
+    border-top: 1px solid rgba(255, 215, 0, 0.2);
+    padding-top: 1rem;
+    display: block;
+}
+
+/* Legacy support for old list format */
 .themes ul {
     list-style: none;
     padding: 0;
@@ -545,6 +617,27 @@ body {
         margin: 1rem auto;
         max-width: 300px;
     }
+    
+    .theme-poetry {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .theme-box {
+        padding: 1.25rem;
+    }
+    
+    .theme-box h4 {
+        font-size: 0.9rem;
+    }
+    
+    .poetry-text {
+        font-size: 0.95rem;
+    }
+    
+    .theme-essence {
+        font-size: 0.8rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -568,6 +661,29 @@ body {
     .intro-text {
         font-size: 1.2rem;
         padding: 1.5rem;
+    }
+    
+    .theme-poetry {
+        gap: 0.75rem;
+    }
+    
+    .theme-box {
+        padding: 1rem;
+    }
+    
+    .theme-box h4 {
+        font-size: 0.85rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .poetry-text {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+    
+    .theme-essence {
+        font-size: 0.75rem;
+        padding-top: 0.75rem;
     }
 }
 
