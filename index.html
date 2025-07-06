@@ -47,6 +47,33 @@
     <div class="background-container">
     </div>
 
+    <!-- Audio Player -->
+    <div class="audio-player" id="audioPlayer">
+        <div class="audio-controls">
+            <button class="audio-btn play-pause-btn" id="playPauseBtn">
+                <span class="material-symbols-outlined">play_arrow</span>
+            </button>
+            <div class="audio-info">
+                <span class="audio-title">GENESIS 2</span>
+                <span class="audio-subtitle">by Sm0k367AI</span>
+            </div>
+            <div class="volume-control">
+                <span class="material-symbols-outlined">volume_up</span>
+                <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="70">
+            </div>
+            <button class="audio-btn minimize-btn" id="minimizeBtn">
+                <span class="material-symbols-outlined">minimize</span>
+            </button>
+        </div>
+        <div class="audio-progress">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+        <audio id="narrativeAudio" preload="auto" loop>
+            <source src="https://cdn1.suno.ai/6f94e7be-5992-44e5-8616-8cdb538ded14.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
     <header class="narrative-header">
         <a href="https://buy.stripe.com/8wM6px5ycf9pgfK000" class="header-logo">EPIC TECH AI</a>
         <h1 class="page-title">THE UNIVERSAL NARRATIVE: <br>THE AWAKENING</h1>
